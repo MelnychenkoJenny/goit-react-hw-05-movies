@@ -1,13 +1,24 @@
+import { FcSearch } from 'react-icons/fc';
+import { useSearchParams } from 'react-router-dom';
 const Movies = () => {
-    return (
-      <main>
-        <h1>Movie</h1>
-        <p>
-          Loing elit. Iusto,
-          laboriosam placeat incidunt rem illum animi nemo quibusdam quia
-          voluptatum voluptate.
-        </p>
-      </main>
-    );
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchMovie = searchParams.get('film')?? ""
+  
+  const updateQueryString = (evt) => {
+   if(evt.target.value==='')return setSearchParams({});
+    setSearchParams({film: evt.target.value});
   };
-  export default Movies
+  return (
+    <>
+      <h2>Search movie</h2>
+      <form>
+        <input type="text" value={searchMovie} onChange={updateQueryString}/>
+        <button type="submit">
+          <FcSearch />
+        </button>
+      </form>
+    </>
+  );
+};
+export default Movies;

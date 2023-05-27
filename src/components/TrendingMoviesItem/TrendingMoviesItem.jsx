@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const TrendingMoviesItem = ({movie: {original_title, poster_path, id}}) => {
     const location = useLocation();
-    console.log(location);
+
     const poster = `https://image.tmdb.org/t/p/original/${poster_path}`
     return (
         <li>
