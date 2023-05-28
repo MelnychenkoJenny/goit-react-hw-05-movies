@@ -6,8 +6,8 @@ import { fetchSearchMovie } from 'services/api';
 
 const Movies = () => {
   const [searchingMovies, setSearchingMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const searchMovie = searchParams.get('film') ?? '';
@@ -15,14 +15,15 @@ const Movies = () => {
   useEffect(() => {
     const getSearchMovies = async (searchQuery, page) => {
       try {
-        setLoading(true);
+        // setLoading(true);
         const { results } = await fetchSearchMovie(searchQuery, page);
         console.log(results);
         setSearchingMovies([...results]);
       } catch (error) {
-        setError(error.message);
+        console.log(error.message);
+        // setError(error.message);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
 
