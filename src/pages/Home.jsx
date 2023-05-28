@@ -1,6 +1,6 @@
 import { Error } from 'components/Error/Error';
 import Loading from 'components/Loading/Loading';
-import TrendingMoviesList from 'components/TrendingMoviesList/TrendingMoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { fetchTrendingMovies } from 'services/api';
@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <>
       <h1>The most popular movies today</h1>
-      <TrendingMoviesList trendingMovies={trendingMovies} />
+      <MoviesList movies={trendingMovies} />
       {loading && <Loading />}
       {error && <Error error={error} />}
     </>

@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import { FcSearch } from 'react-icons/fc';
+import { useSearchParams } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const SearchBar = ({ onSubmit }) => {
+    const [searchParams] = useSearchParams();
+const [searchQuery, setSearchQuery] = useState(searchParams.get('film') ?? '');
+
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    const searchQuery = evt.currentTarget.elements.query.value;
-    console.log(searchQuery);
     if (searchQuery.trim() === '') {
       toast.error(
         'The search field cannot be empty. Please enter a search query.'
@@ -15,42 +19,18 @@ export const SearchBar = ({ onSubmit }) => {
       return;
     }
     onSubmit(searchQuery.trim());
-    evt.target.reset();
+    setSearchQuery('')
   };
+  const updateQueryString = evt => {
+    setSearchQuery(evt.target.value)
+  }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="query" />
+      <input type="text" value={searchQuery} onChange={updateQueryString}  />
       <button type="submit">
         <FcSearch />
       </button>
     </form>
   );
 };
-
-// const updateQueryString = evt => {
-//     if (evt.target.value === '') return setSearchParams({});
-//     setSearchParams({ film: evt.target.value });
-//   };
-
-//   const handleSubmit = evt => {
-//     evt.preventDefault();
-//     if (searchMovie.trim() === '') {
-//         toast.error(
-//           'The search field cannot be empty. Please enter a search query.'
-//         );
-//         return;
-//       }
-//       onSubmit(searchMovie.trim());
-//     //   setSearchParams({});
-//   }
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input type="text" value={searchMovie} onChange={updateQueryString} />
-//       <button type="submit">
-//         <FcSearch />
-//       </button>
-//     </form>
-//   );
-// };

@@ -1,30 +1,34 @@
 import { Link } from "react-router-dom";
 
-const MovieCard = ({
-  detail: { poster_path, title, vote_average, overview, genres },
-}) => {
-  const poster = `https://image.tmdb.org/t/p/original/${poster_path}`;
-  const getGenre = genres => {
-    if (!genres) return 'Unknown genre';
-    return genres.map(genre => genre.name).join(', ');
-  };
+const MovieCard = ({detail: {poster_path, title, vote_average, overview, genres}}) => {
+  
+  const posterUrl = poster_path
+    ? `https://image.tmdb.org/t/p/w400/${poster_path}`
+    : 'https://image.tmdb.org/t/p/w500/dykOcAqI01Fci5cKQW3bEUrPWwU.jpg';
+    const rating = vote_average
+    ? `${(vote_average * 10).toFixed(0)}%`
+    : 'Not rated yet';
+    const review = overview ? overview : 'Not overview'
+ 
+
 
   return (
     <>
       <div>
-          <img src={poster} alt={title} width="100"></img>
+          <img src={posterUrl} alt={title} width="100"></img>
           <div>
             <h2>{title}</h2>
-            <p>User score: {vote_average}</p>
+            <p>User score: {rating}</p>
             <p>
-              <span>Overview </span>
-              {overview}
+              <span>Overview: </span>
+              {review}
             </p>
-    
+            {genres && genres.length > 0 && (
             <p>
-              <span>Genres </span>
-              {getGenre(genres)}
+              <span>Genres: </span>
+              {genres.map(genre => genre.name).join(', ')}
             </p>
+          )}
           </div>
       </div>
       <div>
