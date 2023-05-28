@@ -12,6 +12,10 @@ return data;
 
 export const fetchMovieDetails = async (id) => {
     const {data} = await axios.get(`${API_URL}3/movie/${id}?api_key=${API_KEY}`)
-    return data
+    return data;
 }
 
+export const fetchSearchMovie = async (query, page) => {
+    const {data} = await axios.get(`${API_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`)
+    return data;
+}

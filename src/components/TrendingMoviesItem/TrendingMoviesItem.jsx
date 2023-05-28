@@ -8,7 +8,7 @@ const TrendingMoviesItem = ({movie: {original_title, poster_path, id}}) => {
         <li>
             <Link to={`movies/${id}`} state={{from: location}}>
                 <img src={poster} width="80" alt={original_title}></img>
-                <h2>{original_title}</h2>
+                <h3>{original_title}</h3>
             </Link>
           </li>
     )
