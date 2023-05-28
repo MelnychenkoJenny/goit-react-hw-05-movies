@@ -1,11 +1,12 @@
-import Cast from 'components/Cast/Cast';
-import Reviews from 'components/Reviews/Reviews';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
-import Home from 'pages/Home';
-import Movies from 'pages/Movies';
-import MoviesDetails from 'pages/MoviesDetails';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+const Home = lazy(()=>import('pages/Home'))
+const Movies = lazy(()=>import('pages/Movies'))
+const MoviesDetails = lazy(()=>import('pages/MoviesDetails'))
+const Cast = lazy(()=>import('../Cast/Cast'))
+const Reviews = lazy(()=>import('../Reviews/Reviews'))
 
 export const App = () => {
   return (

@@ -3,7 +3,6 @@ import Loading from 'components/Loading/Loading';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
-
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { fetchSearchMovie } from 'services/api';

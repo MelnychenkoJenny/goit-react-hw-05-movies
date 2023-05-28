@@ -1,8 +1,7 @@
 import { Error } from 'components/Error/Error';
 import Loading from 'components/Loading/Loading';
 import MoviesList from 'components/MoviesList/MoviesList';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchTrendingMovies } from 'services/api';
 
 const Home = () => {
