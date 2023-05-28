@@ -3,6 +3,7 @@ import Loading from 'components/Loading/Loading';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { useEffect, useState } from 'react';
 import { fetchTrendingMovies } from 'services/api';
+import { MainTitle } from './Home.styled';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -27,7 +28,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>The most popular movies today</h1>
+      <MainTitle>The most popular movies today</MainTitle>
       <MoviesList movies={trendingMovies} />
       {loading && <Loading />}
       {error && <Error error={error} />}

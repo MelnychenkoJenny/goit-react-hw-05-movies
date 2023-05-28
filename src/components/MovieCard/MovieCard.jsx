@@ -15,7 +15,7 @@ const MovieCard = ({detail: {poster_path, title, vote_average, overview, genres}
   return (
     <>
       <div>
-          <img src={posterUrl} alt={title} width="100"></img>
+          <img src={posterUrl} alt={title} width="395"></img>
           <div>
             <h2>{title}</h2>
             <p>User score: {rating}</p>

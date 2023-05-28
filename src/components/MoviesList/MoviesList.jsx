@@ -1,15 +1,16 @@
 import TrendingMoviesItem from "components/MoviesItem/MoviesItem";
+import { MoviesListStyle } from "./MovieList.styled";
 
 const MoviesList = ({movies}) => {
   return (
-    <ul>
+    <MoviesListStyle>
       {movies.map(movie => {
        
         return (
           <TrendingMoviesItem key={movie.id} movie={movie}/>
         );
       })}
-    </ul>
+    </MoviesListStyle>
   );
 };
 export default MoviesList;
