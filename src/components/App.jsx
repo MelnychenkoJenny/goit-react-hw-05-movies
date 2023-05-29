@@ -2,15 +2,15 @@ import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-const Home = lazy(()=>import('pages/Home'))
-const Movies = lazy(()=>import('pages/Movies'))
-const MoviesDetails = lazy(()=>import('pages/MoviesDetails'))
-const Cast = lazy(()=>import('./Cast/Cast'))
-const Reviews = lazy(()=>import('./Reviews/Reviews'))
+const Home = lazy(() => import('pages/Home'));
+const Movies = lazy(() => import('pages/Movies'));
+const MoviesDetails = lazy(() => import('pages/MoviesDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
-   <>
+    <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
@@ -22,6 +22,6 @@ export const App = () => {
         </Route>
       </Routes>
       <ToastContainer autoClose={2000} />
-   </>
+    </>
   );
 };

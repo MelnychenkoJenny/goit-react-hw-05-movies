@@ -1,14 +1,11 @@
-import TrendingMoviesItem from "components/MoviesItem/MoviesItem";
-import { MoviesListStyle } from "./MovieList.styled";
+import TrendingMoviesItem from 'components/MoviesItem/MoviesItem';
+import { MoviesListStyle } from './MovieList.styled';
 
-const MoviesList = ({movies}) => {
+const MoviesList = ({ movies }) => {
   return (
     <MoviesListStyle>
       {movies.map(movie => {
-       
-        return (
-          <TrendingMoviesItem key={movie.id} movie={movie}/>
-        );
+        return <TrendingMoviesItem key={movie.id} movie={movie} />;
       })}
     </MoviesListStyle>
   );

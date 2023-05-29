@@ -1,7 +1,6 @@
-import { LoadingStyle} from './Loading.styled'
-
+import { LoadingStyle } from './Loading.styled';
 
 const Loading = () => {
-    return <LoadingStyle/>
-}
+  return <LoadingStyle />;
+};
 export default Loading;

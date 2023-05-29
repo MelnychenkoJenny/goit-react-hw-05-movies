@@ -16,18 +16,20 @@ const Movies = () => {
   const searchMovie = searchParams.get('film') ?? '';
 
   useEffect(() => {
-    const getSearchMovies = async (searchQuery) => {
+    const getSearchMovies = async searchQuery => {
       try {
         setLoading(true);
         const { results } = await fetchSearchMovie(searchQuery);
 
         if (results.length === 0) {
-          toast.error(`Sorry, there are no movies matching your query: "${searchMovie}". Please try to search something else.`);
-          setSearchingMovies([]); 
-          setSearchParams({})}
+          toast.error(
+            `Sorry, there are no movies matching your query: "${searchMovie}". Please try to search something else.`
+          );
+          setSearchingMovies([]);
+          setSearchParams({});
+        }
         setSearchingMovies([...results]);
       } catch (error) {
-
         setError(error.message);
       } finally {
         setLoading(false);
@@ -43,9 +45,11 @@ const Movies = () => {
 
   return (
     <>
-      <h2>Search movie</h2>
+      <h2 style={{textAlign: 'center',}}>
+        Search movie
+      </h2>
       <SearchBar onSubmit={handleSearchMovieChange} />
-      <MoviesList movies={searchingMovies}/>
+      <MoviesList movies={searchingMovies} />
       {loading && <Loading />}
       {error && <Error error={error} />}
     </>

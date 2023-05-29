@@ -1,13 +1,22 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MoviesItemStyle = styled.li`
-margin-top: 20px;
-margin-left: 20px;
-@media screen and (min-width: 760px) {
-    flex-basis: calc(50% - 32px);}
-    @media screen and (min-width: 1280px) {
-        flex-basis: calc(33.3333% - 16px);
-    margin-top: 32px;
-    margin-left: 16px;}
-`
-
+  flex-basis: calc((100% - 10px) / 2);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: ${({ theme: { colors } }) => colors.shadow};
+  transition: scale 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  :hover {
+    scale: 1.06;
+  }
+  @media screen and (min-width: 760px) {
+    flex-basis: calc((100% - 20px) / 4);
+  }
+  @media screen and (min-width: 1300px) {
+    flex-basis: calc((100% - 30px) / 5);
+  }
+`;
+export const MovieTitle = styled.h3`
+  padding: 10px;
+  font-size: 12px;
+`;

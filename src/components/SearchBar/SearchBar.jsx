@@ -4,10 +4,13 @@ import { useSearchParams } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ButtonSubmit, FormStyle, Input } from './SearchBar.styled';
 
 export const SearchBar = ({ onSubmit }) => {
-    const [searchParams] = useSearchParams();
-const [searchQuery, setSearchQuery] = useState(searchParams.get('film') ?? '');
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get('film') ?? ''
+  );
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -19,18 +22,23 @@ const [searchQuery, setSearchQuery] = useState(searchParams.get('film') ?? '');
       return;
     }
     onSubmit(searchQuery.trim());
-    setSearchQuery('')
+    setSearchQuery('');
   };
   const updateQueryString = evt => {
-    setSearchQuery(evt.target.value)
-  }
+    setSearchQuery(evt.target.value);
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={searchQuery} onChange={updateQueryString}  />
-      <button type="submit">
+    <FormStyle onSubmit={handleSubmit}>
+      <Input
+        type="text"
+        value={searchQuery}
+        onChange={updateQueryString}
+        autoFocus
+      />
+      <ButtonSubmit type="submit">
         <FcSearch />
-      </button>
-    </form>
+      </ButtonSubmit>
+    </FormStyle>
   );
 };

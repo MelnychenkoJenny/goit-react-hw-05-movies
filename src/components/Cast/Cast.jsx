@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCast } from 'services/api';
+import { CastInfo, CastItem, CastList, Empty } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -25,14 +26,14 @@ const Cast = () => {
   return (
     <>
       {castInfo.length ? (
-        <ul>
+        <CastList>
           {castInfo.map(({ id, profile_path, name, character }) => (
-            <li key={id}>
+            <CastItem key={id}>
               {profile_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w200${profile_path}`}
                   alt={`${name}`}
-                  width="100"
+                  width="200"
                 ></img>
               ) : (
                 <img
@@ -40,20 +41,24 @@ const Cast = () => {
                     'https://image.tmdb.org/t/p/w500/dykOcAqI01Fci5cKQW3bEUrPWwU.jpg'
                   }
                   alt="Not found"
-                  width="100"
+                  width="200"
                 ></img>
               )}
-              <h3>{name}</h3>
-              {character ? (
-                <p>Character: {character}</p>
-              ) : (
-                <p>Character: Unknown</p>
-              )}
-            </li>
+              <CastInfo>
+                <h3>{name}</h3>
+                {character ? (
+                  <p>Character: {character}</p>
+                ) : (
+                  <p>Character: Unknown</p>
+                )}
+              </CastInfo>
+            </CastItem>
           ))}
-        </ul>
+        </CastList>
       ) : (
-        <p>Unfortunately, we don't have cast information for this movie.</p>
+        <Empty>
+          Unfortunately, we don't have cast information for this movie.
+        </Empty>
       )}
       {error && <Error error={error} />}
     </>

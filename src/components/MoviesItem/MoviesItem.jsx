@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { MoviesItemStyle } from "./MoviesItem.styled";
+import { MoviesItemStyle, MovieTitle } from "./MoviesItem.styled";
 
 const MoviesItem = ({movie: {title, poster_path, id}}) => {
     const location = useLocation();
@@ -13,7 +13,7 @@ const posterUrl = poster_path
         <MoviesItemStyle>
             <Link to={`${pathName}${id}`} state={{from: location}}>
                 <img src={posterUrl} width="395" alt={title}></img>
-                <h3>{title}</h3>
+                <MovieTitle>{title}</MovieTitle>
             </Link>
           </MoviesItemStyle>
     )
